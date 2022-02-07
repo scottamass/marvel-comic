@@ -2,6 +2,7 @@ from sqlite3 import Timestamp
 import requests
 import hashlib
 import datetime
+import json
 
 from pprint import pprint as pp
 timestamp= datetime.datetime.now().strftime('%Y-%m-%d%H:%M:%S')
@@ -18,9 +19,16 @@ def hash_params():
     hashed_params = hash_md5.hexdigest()
 
     return hashed_params
-char="thor"
-params = {'ts': timestamp, 'apikey': authPub, 'hash': hash_params()}
-res = requests.get(f'{baseurl}/characters?name={char}',params=params)
 
-results = res.json()
-pp(results)
+while True:
+    char=input('who would you like to search ?')
+    params = {'ts': timestamp, 'apikey': authPub, 'hash': hash_params()}
+    response = requests.get(f'{baseurl}/characters?name={char}',params=params).json()
+    try:
+        parsed_json = response
+        name = parsed_json["data"]["results"][0]["name"]
+        desc = parsed_json["data"]["results"][0]["description"]
+        print(name)
+        print(desc)
+    except IndexError:
+        print('not found')
