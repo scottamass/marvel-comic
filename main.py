@@ -28,7 +28,11 @@ while True:
         parsed_json = response
         name = parsed_json["data"]["results"][0]["name"]
         desc = parsed_json["data"]["results"][0]["description"]
+        comics = parsed_json["data"]["results"][0]["comics"]['items']
         print(name)
         print(desc)
+        for item in comics:
+            print(item['name'])
+
     except IndexError:
         print('not found')
