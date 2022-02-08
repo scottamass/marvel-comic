@@ -1,8 +1,8 @@
-from sqlite3 import Timestamp
 import requests
 import hashlib
 import datetime
-import json
+
+
 
 from pprint import pprint as pp
 timestamp= datetime.datetime.now().strftime('%Y-%m-%d%H:%M:%S')
@@ -21,9 +21,17 @@ def hash_params():
     return hashed_params
 
 while True:
-    char=input('who would you like to search ?')
     params = {'ts': timestamp, 'apikey': authPub, 'hash': hash_params()}
+    all = requests.get(f'{baseurl}/characters',params=params).json()
+    for c in all["data"]['results']:
+        print(c['name'])
+    char=input('who would you like to search ?')
+    
     response = requests.get(f'{baseurl}/characters?name={char}',params=params).json()
+
+    if char == "exit":
+        exit()
+    
     try:
         parsed_json = response
         name = parsed_json["data"]["results"][0]["name"]
