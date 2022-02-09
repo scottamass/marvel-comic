@@ -20,11 +20,14 @@ def hash_params():
 
     return hashed_params
 
-while True:
+def get_heros():
     params = {'ts': timestamp, 'apikey': authPub, 'hash': hash_params()}
     all = requests.get(f'{baseurl}/characters',params=params).json()
-    for c in all["data"]['results']:
-        print(c['name'])
+    heros= all["data"]['results']
+    return heros
+
+
+def search_hero():    
     char=input('who would you like to search ?')
     
     response = requests.get(f'{baseurl}/characters?name={char}',params=params).json()
@@ -44,3 +47,4 @@ while True:
 
     except IndexError:
         print('not found')
+

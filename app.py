@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    out= get_heros()
+    return render_template('index.html', heros=out )
 
 app.run(host='0.0.0.0', port=81)
