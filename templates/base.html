@@ -4,17 +4,21 @@
 
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-<body>
-    <section class="container">
-  <header class="sticky-top">
-    my flask app 
+<body style="background-color: #808080;">
+    
+  <header class="sticky-top" style="height: 10em;background-color: red;">
+    <div class="container">
+    <h1>my flask app </h1>
   
   <form method="post">
     <label for="search ">Search Hero</label>
     <input name="hero" id="username" required>
     <input type="submit" value="Search">
   </form>
+</div>
 </header>
+<section class="container" style="padding-top: 1em;" >
   {% block content %}{% endblock %}
-    </section>
+</section>
+    
 </body>

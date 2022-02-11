@@ -29,7 +29,7 @@ def get_heros():
 
 def search_hero():    
     char=input('who would you like to search ?')
-    
+    params = {'ts': timestamp, 'apikey': authPub, 'hash': hash_params()}
     response = requests.get(f'{baseurl}/characters?name={char}',params=params).json()
 
     if char == "exit":
@@ -48,3 +48,5 @@ def search_hero():
     except IndexError:
         print('not found')
 
+#while True:
+#    search_hero()
