@@ -6,18 +6,18 @@
 </head>
 <body style="background-color: #808080;">
     
-  <header class="sticky-top" style="height: 10em;background-color: red;">
+  <header class="fixed-top" style="height: 10em;background-color: red;">
     <div class="container">
-    <h1>my flask app </h1>
+    <h1>Marvel Hero Search</h1>
   
-  <form method="post">
+  <form action="/search" method="post">
     <label for="search ">Search Hero</label>
-    <input name="hero" id="username" required>
+    <input name="hero" id="search" value="{{search}}" required>
     <input type="submit" value="Search">
   </form>
 </div>
 </header>
-<section class="container" style="padding-top: 1em;" >
+<section class="container" style="padding-top: 10em;" >
   {% block content %}{% endblock %}
 </section>
     

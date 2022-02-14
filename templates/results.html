@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+
+    {% for i in out %}
+    <h1>{{i['name']}}</h1>
+    <img src="{{i['thumbnail']['path']}}.jpg">
+    <p>{{i['description']}}</p>
+    
+</section>
+<section>
+    <div class="row">
+        {% for c in comics %}
+        <div class="col-4">
+            
+            <div class="card">
+                <img src= {{c['thumbnail']['path']}}.jpg class="card-img" alt="..."> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+        <form action="">
+            <button type="submit" class="btn btn-primary">load more</button>
+        </form>
+</section>
+    {% endfor %}
+{% endblock %}
